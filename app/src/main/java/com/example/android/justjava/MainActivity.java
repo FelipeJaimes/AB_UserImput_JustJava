@@ -14,8 +14,6 @@ import java.text.NumberFormat;
  */
 public class MainActivity extends AppCompatActivity {
 
-    TextView tVquantity;
-    TextView textQuantity;
     TextView textViewQuantity;
 
     @Override
@@ -28,15 +26,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void increment(View view) {
         String stringQuantity = textViewQuantity.getText().toString();
-        int quantity= Integer.parseInt(stringQuantity);
+        int quantity = Integer.parseInt(stringQuantity);
         quantity++;
         display(quantity);
     }
 
     public void decrement(View view) {
         String stringQuantity = textViewQuantity.getText().toString();
-        int quantity= Integer.parseInt(stringQuantity);
-        if (quantity!=0){
+        int quantity = Integer.parseInt(stringQuantity);
+        if (quantity != 0) {
             quantity--;
             display(quantity);
         }
@@ -48,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view) {
         String stringQuantity = textViewQuantity.getText().toString();
-        int quantity= Integer.parseInt(stringQuantity);
+        int quantity = Integer.parseInt(stringQuantity);
         display(quantity);
         displayPrice(quantity * 5);
     }
