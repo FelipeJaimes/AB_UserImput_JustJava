@@ -1,6 +1,7 @@
 package com.example.android.justjava;
 
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,19 +14,32 @@ import java.text.NumberFormat;
  */
 public class MainActivity extends AppCompatActivity {
 
+    TextView tVquantity;
+    TextView textQuantity;
+    TextView textViewQuantity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        textViewQuantity = findViewById(R.id.quantity_text_view);
     }
 
+
     public void increment(View view) {
-        int quantity = 3;
+        String stringQuantity = textViewQuantity.getText().toString();
+        int quantity= Integer.parseInt(stringQuantity);
+        quantity++;
         display(quantity);
     }
 
     public void decrement(View view) {
-        int quantity = 1;
+        String stringQuantity = textViewQuantity.getText().toString();
+        int quantity= Integer.parseInt(stringQuantity);
+        if (quantity!=0){
+            quantity--;
+            display(quantity);
+        }
         display(quantity);
     }
 
@@ -33,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        int quantity = 2;
+        String stringQuantity = textViewQuantity.getText().toString();
+        int quantity= Integer.parseInt(stringQuantity);
         display(quantity);
         displayPrice(quantity * 5);
     }
