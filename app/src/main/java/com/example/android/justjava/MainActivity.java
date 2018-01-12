@@ -49,8 +49,9 @@ public class MainActivity extends AppCompatActivity {
         int quantity = Integer.parseInt(stringQuantity);
         display(quantity);
         displayPrice(quantity * 5);
+        String priceMessage = "Thank you for buying " + quantity +" cups of coffee!";
+        displayMessage(priceMessage);
     }
-
 
     /**
      * This method displays the given quantity value on the screen.
@@ -67,4 +68,13 @@ public class MainActivity extends AppCompatActivity {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
     }
+
+    /**
+     * This method displays the given text on the screen.
+     */
+    private void displayMessage(String message) {
+        TextView priceTextView = (TextView) findViewById(R.id.message_text_view);
+        priceTextView.setText(message);
+    }
+
 }
