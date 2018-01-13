@@ -8,45 +8,180 @@
     android:orientation="vertical"
     tools:context="com.example.android.justjava.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="Quantity"
-        android:textAllCaps="true" />
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <TextView
+            android:id="@+id/type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="Type"
+            android:textAllCaps="true" />
+
+        <TextView
+            android:id="@+id/quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="8dp"
+            android:text="Quantity"
+            android:textAllCaps="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/late"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:padding="8dp"
+            android:text="Late"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
         <Button
+            android:id="@+id/minusLate"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:onClick="decrement"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/quantity_text_view_late"
+            android:onClick="decrementLate"
             android:padding="8dp"
             android:text="-"
             android:textAllCaps="true" />
 
         <TextView
-            android:id="@+id/quantity_text_view"
+            android:id="@+id/quantity_text_view_late"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/plusLate"
+            android:layout_toStartOf="@+id/plusLate"
             android:padding="8dp"
             android:text="0"
             android:textColor="@android:color/black"
             android:textSize="16sp" />
 
         <Button
+            android:id="@+id/plusLate"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:onClick="increment"
+            android:layout_alignParentRight="true"
+            android:onClick="incrementLate"
             android:padding="8dp"
             android:text="+"
             android:textAllCaps="true" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/moca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:padding="8dp"
+            android:text="Moca"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/minusMoca"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/quantity_text_view_moca"
+            android:onClick="decrementMoca"
+            android:padding="8dp"
+            android:text="-"
+            android:textAllCaps="true" />
+
+        <TextView
+            android:id="@+id/quantity_text_view_moca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/plusMoca"
+            android:padding="8dp"
+            android:text="0"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/plusMoca"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentRight="true"
+            android:onClick="incrementMoca"
+            android:padding="8dp"
+            android:text="+"
+            android:textAllCaps="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/cappuccino"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:padding="8dp"
+            android:text="Cappuccino"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/minusCappuccino"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/quantity_text_view_cappuccino"
+            android:onClick="decrementCappuccino"
+            android:padding="8dp"
+            android:text="-"
+            android:textAllCaps="true" />
+
+        <TextView
+            android:id="@+id/quantity_text_view_cappuccino"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/plusCappuccino"
+            android:padding="8dp"
+            android:text="0"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/plusCappuccino"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentRight="true"
+            android:onClick="incrementCappuccino"
+            android:padding="8dp"
+            android:text="+"
+            android:textAllCaps="true" />
+
+    </RelativeLayout>
 
     <TextView
         android:layout_width="wrap_content"
