@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         textViewQuantityCappuccino = findViewById(R.id.quantity_text_view_cappuccino);
     }
 
-
     public void incrementLate(View view) {
         String stringQuantity = textViewQuantityLate.getText().toString();
         int quantity = Integer.parseInt(stringQuantity);
@@ -89,23 +88,9 @@ public class MainActivity extends AppCompatActivity {
         int quantityLate = Integer.parseInt(stringQuantityLate);
         int quantityMoca = Integer.parseInt(stringQuantityMoca);
         int quantityCapuccino = Integer.parseInt(stringQuantityCappuccino);
-        displayPrice(quantityLate * 5 + quantityMoca * 5 + quantityCapuccino * 5);
-        String priceMessage = "Thank you for buying ";
-        if (quantityLate == 0 && quantityMoca == 0 && quantityCapuccino == 0) {
-            priceMessage = priceMessage + "nothing cheap fuck!";
-            displayMessage(priceMessage);
-        }
-        if (quantityLate != 0) {
-            priceMessage = priceMessage + quantityLate + " cups of Late. ";
-        }
-        if (quantityLate != 0) {
-            priceMessage = priceMessage + quantityMoca + " cups of Moca. ";
-        }
-        if (quantityLate != 0) {
-            priceMessage = priceMessage + quantityCapuccino + " cups of Cappuccino. ";
-        }
-        displayMessage(priceMessage);
-
+        int price = calculatePrice(quantityLate, quantityMoca, quantityCapuccino);
+        displayPrice(price);
+        createOrderSummary(quantityLate, quantityMoca, quantityCapuccino, price);
     }
 
     /**
@@ -130,6 +115,20 @@ public class MainActivity extends AppCompatActivity {
     private void displayMessage(String message) {
         TextView priceTextView = (TextView) findViewById(R.id.message_text_view);
         priceTextView.setText(message);
+    }
+
+    private void createOrderSummary(int quantityLate, int quantityMoca, int quantityCapuccino, int price) {
+
+        String message= "Name: Felipe Jaimes" + "\n"+
+                        "Quantity: " + (quantityCapuccino + quantityLate + quantityMoca) + "\n"+
+                        "Total: $"+ price +".00" + "\n"+
+                        "Thank you!";
+        displayMessage(message);
+    }
+
+    private int calculatePrice(int quantityLate, int quantityMoca, int quantityCapuccino) {
+
+        return (quantityLate * 5 + quantityMoca * 5 + quantityCapuccino * 5);
     }
 
 }
