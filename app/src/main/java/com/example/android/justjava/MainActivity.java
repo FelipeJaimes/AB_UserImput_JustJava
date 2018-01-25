@@ -89,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
         int quantityMoca = Integer.parseInt(stringQuantityMoca);
         int quantityCapuccino = Integer.parseInt(stringQuantityCappuccino);
         int price = calculatePrice(quantityLate, quantityMoca, quantityCapuccino);
-        displayPrice(price);
         createOrderSummary(quantityLate, quantityMoca, quantityCapuccino, price);
     }
 
@@ -102,32 +101,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * This method displays the given price on the screen.
-     */
-    private void displayPrice(int number) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
-    }
-
-    /**
      * This method displays the given text on the screen.
      */
     private void displayMessage(String message) {
-        TextView priceTextView = (TextView) findViewById(R.id.message_text_view);
-        priceTextView.setText(message);
+        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
+        orderSummaryTextView.setText(message);
     }
 
     private void createOrderSummary(int quantityLate, int quantityMoca, int quantityCapuccino, int price) {
 
-        String message= "Name: Felipe Jaimes" + "\n"+
-                        "Quantity: " + (quantityCapuccino + quantityLate + quantityMoca) + "\n"+
-                        "Total: $"+ price +".00" + "\n"+
-                        "Thank you!";
+        String message = "Name: Felipe Jaimes" + "\n" +
+                "Quantity: " + (quantityCapuccino + quantityLate + quantityMoca) + "\n" +
+                "Total: $" + price + ".00" + "\n" +
+                "Thank you!";
         displayMessage(message);
     }
 
     private int calculatePrice(int quantityLate, int quantityMoca, int quantityCapuccino) {
-
         return (quantityLate * 5 + quantityMoca * 5 + quantityCapuccino * 5);
     }
 

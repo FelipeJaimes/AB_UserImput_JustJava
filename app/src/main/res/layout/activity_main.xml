@@ -187,24 +187,6 @@
 
     </RelativeLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:padding="8dp"
-        android:text="Price"
-        android:textAllCaps="true" />
-
-    <TextView
-        android:id="@+id/price_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:padding="8dp"
-        android:text="$0"
-        android:textColor="@android:color/black"
-        android:textSize="16sp" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -215,7 +197,15 @@
         android:textAllCaps="true" />
 
     <TextView
-        android:id="@+id/message_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="8dp"
+        android:text="Order Summary:"
+        android:textAllCaps="true" />
+
+    <TextView
+        android:id="@+id/order_summary_text_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#01579B"
