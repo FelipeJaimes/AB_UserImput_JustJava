@@ -187,6 +187,22 @@
 
     </RelativeLayout>
 
+
+
+    <TextView
+        android:padding="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Toppings:"
+        android:textAllCaps="true"/>
+
+    <CheckBox
+        android:padding="8dp"
+        android:id="@+id/whipped_cream_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Whipped cream"/>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

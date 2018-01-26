@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     TextView textViewQuantityLate;
     TextView textViewQuantityMoca;
     TextView textViewQuantityCappuccino;
+    CheckBox checkBoxwhippedCream;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         textViewQuantityLate = findViewById(R.id.quantity_text_view_late);
         textViewQuantityMoca = findViewById(R.id.quantity_text_view_moca);
         textViewQuantityCappuccino = findViewById(R.id.quantity_text_view_cappuccino);
+        checkBoxwhippedCream = findViewById(R.id.whipped_cream_checkbox);
+
     }
 
     public void incrementLate(View view) {
@@ -110,7 +114,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void createOrderSummary(int quantityLate, int quantityMoca, int quantityCapuccino, int price) {
 
+        boolean hasWhippedCream= checkBoxwhippedCream.isChecked();
         String message = "Name: Felipe Jaimes" + "\n" +
+                "Whipped cream: " + hasWhippedCream + "\n" +
                 "Quantity: " + (quantityCapuccino + quantityLate + quantityMoca) + "\n" +
                 "Total: $" + price + ".00" + "\n" +
                 "Thank you!";
