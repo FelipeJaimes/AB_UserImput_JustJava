@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 /**
@@ -19,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     TextView textViewQuantityMoca;
     TextView textViewQuantityCappuccino;
     CheckBox checkBoxwhippedCream;
+    CheckBox checkBoxChocolate;
+    EditText editTextName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         textViewQuantityMoca = findViewById(R.id.quantity_text_view_moca);
         textViewQuantityCappuccino = findViewById(R.id.quantity_text_view_cappuccino);
         checkBoxwhippedCream = findViewById(R.id.whipped_cream_checkbox);
+        checkBoxChocolate = findViewById(R.id.chocolate_checkbox);
+        editTextName = findViewById(R.id.name_edit_text);
 
     }
 
@@ -89,18 +95,21 @@ public class MainActivity extends AppCompatActivity {
         String stringQuantityLate = textViewQuantityLate.getText().toString();
         String stringQuantityMoca = textViewQuantityMoca.getText().toString();
         String stringQuantityCappuccino = textViewQuantityCappuccino.getText().toString();
+        String name = editTextName.getText().toString();
+        boolean hasChocolate = checkBoxChocolate.isChecked();
+        boolean hasWhippedCream = checkBoxwhippedCream.isChecked();
         int quantityLate = Integer.parseInt(stringQuantityLate);
         int quantityMoca = Integer.parseInt(stringQuantityMoca);
         int quantityCapuccino = Integer.parseInt(stringQuantityCappuccino);
-        int price = calculatePrice(quantityLate, quantityMoca, quantityCapuccino);
-        createOrderSummary(quantityLate, quantityMoca, quantityCapuccino, price);
+        int price = calculatePrice(quantityLate, quantityMoca, quantityCapuccino, hasChocolate, hasWhippedCream);
+        createOrderSummary(name, hasChocolate, hasWhippedCream, quantityLate, quantityMoca, quantityCapuccino, price);
     }
 
     /**
      * This method displays the given quantity value on the screen.
      */
     private void display(int number, int id) {
-        TextView quantityTextView = (TextView) findViewById(id);
+        TextView quantityTextView = findViewById(id);
         quantityTextView.setText("" + number);
     }
 
@@ -108,23 +117,31 @@ public class MainActivity extends AppCompatActivity {
      * This method displays the given text on the screen.
      */
     private void displayMessage(String message) {
-        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
+        TextView orderSummaryTextView = findViewById(R.id.order_summary_text_view);
         orderSummaryTextView.setText(message);
     }
 
-    private void createOrderSummary(int quantityLate, int quantityMoca, int quantityCapuccino, int price) {
+    private void createOrderSummary(String name, boolean hasChocolate, boolean hasWhippedCream, int quantityLate, int quantityMoca, int quantityCapuccino, int price) {
 
-        boolean hasWhippedCream= checkBoxwhippedCream.isChecked();
-        String message = "Name: Felipe Jaimes" + "\n" +
+        String message = "Name: " + name + "\n" +
                 "Whipped cream: " + hasWhippedCream + "\n" +
+                "Chocolate: " + hasChocolate + "\n" +
                 "Quantity: " + (quantityCapuccino + quantityLate + quantityMoca) + "\n" +
-                "Total: $" + price + ".00" + "\n" +
+                "Total: " + DecimalFormat.getCurrencyInstance().format(price) + "\n" +
                 "Thank you!";
         displayMessage(message);
     }
 
-    private int calculatePrice(int quantityLate, int quantityMoca, int quantityCapuccino) {
-        return (quantityLate * 5 + quantityMoca * 5 + quantityCapuccino * 5);
+    private int calculatePrice(int quantityLate, int quantityMoca, int quantityCapuccino, boolean hasChocolate, boolean hasWhippedCream) {
+        int chocolatePrice = 0;
+        int creamPrice = 0;
+        if (hasChocolate) {
+            chocolatePrice = 1;
+        }
+        if (hasWhippedCream) {
+            creamPrice = 1;
+        }
+        return (quantityLate * 5 + quantityMoca * 5 + quantityCapuccino * 5 + chocolatePrice * 2 + creamPrice * 1);
     }
 
 }
