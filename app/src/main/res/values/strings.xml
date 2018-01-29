@@ -1,3 +1,23 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" >
+
+    <!--Values for the activity_mail.xml-->
     <string name="app_name">Just Java</string>
+    <string name="type">Type</string>
+    <string name="quantity">Quantity</string>
+    <string name="tfname">Name</string>
+    <string name="late">Late</string>
+    <string name="moca">Moca</string>
+    <string name="capuccino">Capuccino</string>
+    <string name="toppings">Toppings</string>
+    <string name="whippedCream">Whipped cream</string>
+    <string name="chocolate">Chocolate</string>
+    <string name="order">Order</string>
+
+    <!--Values for the MainActivity.java-->
+    <string name="order_summary_name">Name: <xliff:g id="name" example="Amy">%s</xliff:g></string>
+    <string name="total">Total</string>
+    <string name="thankYou">Thank you!</string>
+
+
+
 </resources>

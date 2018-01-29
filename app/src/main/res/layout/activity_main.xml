@@ -25,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="Type"
+                android:text="@string/type"
                 android:textAllCaps="true"
                 android:textColor="@android:color/white" />
 
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:padding="8dp"
-                android:text="Quantity"
+                android:text="@string/quantity"
                 android:textAllCaps="true"
                 android:textColor="@android:color/white" />
 
@@ -45,7 +45,7 @@
             android:id="@+id/name_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name"
+            android:hint="@string/tfname"
             android:inputType="textCapWords"
             android:padding="8dp" />
 
@@ -61,7 +61,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:padding="8dp"
-                android:text="Late"
+                android:text="@string/late"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
 
@@ -112,7 +112,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:padding="8dp"
-                android:text="Moca"
+                android:text="@string/moca"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
 
@@ -159,10 +159,12 @@
                 android:id="@+id/cappuccino"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/quantity_text_view_cappuccino"
+                android:layout_alignBottom="@+id/quantity_text_view_cappuccino"
                 android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true"
                 android:padding="8dp"
-                android:text="Cappuccino"
+                android:text="@string/capuccino"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
 
@@ -205,7 +207,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="Toppings:"
+            android:text="@string/toppings"
             android:textAllCaps="true" />
 
         <CheckBox
@@ -213,14 +215,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="Whipped cream" />
+            android:text="@string/whippedCream" />
 
         <CheckBox
             android:id="@+id/chocolate_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="Chocolate" />
+            android:text="@string/chocolate" />
 
         <Button
             android:layout_width="wrap_content"
@@ -228,27 +230,8 @@
             android:layout_gravity="center"
             android:onClick="submitOrder"
             android:padding="8dp"
-            android:text="Order"
+            android:text="@string/order"
             android:textAllCaps="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="8dp"
-            android:text="Order Summary:"
-            android:textAllCaps="true" />
-
-        <TextView
-            android:id="@+id/order_summary_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#01579B"
-            android:gravity="center"
-            android:padding="8dp"
-            android:text=""
-            android:textColor="@android:color/white"
-            android:textSize="16sp" />
 
     </LinearLayout>
 

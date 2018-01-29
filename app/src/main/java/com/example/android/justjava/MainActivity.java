@@ -1,7 +1,10 @@
 package com.example.android.justjava;
 
 
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -35,6 +38,28 @@ public class MainActivity extends AppCompatActivity {
         checkBoxChocolate = findViewById(R.id.chocolate_checkbox);
         editTextName = findViewById(R.id.name_edit_text);
 
+    }
+
+    public void submitOrder(View view) {
+        String stringQuantityLate = textViewQuantityLate.getText().toString();
+        String stringQuantityMoca = textViewQuantityMoca.getText().toString();
+        String stringQuantityCappuccino = textViewQuantityCappuccino.getText().toString();
+        String name = editTextName.getText().toString();
+        boolean hasChocolate = checkBoxChocolate.isChecked();
+        boolean hasWhippedCream = checkBoxwhippedCream.isChecked();
+        int quantityLate = Integer.parseInt(stringQuantityLate);
+        int quantityMoca = Integer.parseInt(stringQuantityMoca);
+        int quantityCapuccino = Integer.parseInt(stringQuantityCappuccino);
+        int price = calculatePrice(quantityLate, quantityMoca, quantityCapuccino, hasChocolate, hasWhippedCream);
+        String message = createOrderSummary(name, hasChocolate, hasWhippedCream, quantityLate, quantityMoca, quantityCapuccino, price);
+
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(intent.EXTRA_SUBJECT, "Coffee Order for " + name);
+        intent.putExtra(intent.EXTRA_TEXT, message);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 
     public void incrementLate(View view) {
@@ -88,48 +113,20 @@ public class MainActivity extends AppCompatActivity {
         display(quantity, R.id.quantity_text_view_cappuccino);
     }
 
-    /**
-     * This method is called when the order button is clicked.
-     */
-    public void submitOrder(View view) {
-        String stringQuantityLate = textViewQuantityLate.getText().toString();
-        String stringQuantityMoca = textViewQuantityMoca.getText().toString();
-        String stringQuantityCappuccino = textViewQuantityCappuccino.getText().toString();
-        String name = editTextName.getText().toString();
-        boolean hasChocolate = checkBoxChocolate.isChecked();
-        boolean hasWhippedCream = checkBoxwhippedCream.isChecked();
-        int quantityLate = Integer.parseInt(stringQuantityLate);
-        int quantityMoca = Integer.parseInt(stringQuantityMoca);
-        int quantityCapuccino = Integer.parseInt(stringQuantityCappuccino);
-        int price = calculatePrice(quantityLate, quantityMoca, quantityCapuccino, hasChocolate, hasWhippedCream);
-        createOrderSummary(name, hasChocolate, hasWhippedCream, quantityLate, quantityMoca, quantityCapuccino, price);
-    }
-
-    /**
-     * This method displays the given quantity value on the screen.
-     */
     private void display(int number, int id) {
         TextView quantityTextView = findViewById(id);
         quantityTextView.setText("" + number);
     }
 
-    /**
-     * This method displays the given text on the screen.
-     */
-    private void displayMessage(String message) {
-        TextView orderSummaryTextView = findViewById(R.id.order_summary_text_view);
-        orderSummaryTextView.setText(message);
-    }
+    private String createOrderSummary(String name, boolean hasChocolate, boolean hasWhippedCream, int quantityLate, int quantityMoca, int quantityCapuccino, int price) {
 
-    private void createOrderSummary(String name, boolean hasChocolate, boolean hasWhippedCream, int quantityLate, int quantityMoca, int quantityCapuccino, int price) {
-
-        String message = "Name: " + name + "\n" +
-                "Whipped cream: " + hasWhippedCream + "\n" +
-                "Chocolate: " + hasChocolate + "\n" +
-                "Quantity: " + (quantityCapuccino + quantityLate + quantityMoca) + "\n" +
-                "Total: " + DecimalFormat.getCurrencyInstance().format(price) + "\n" +
-                "Thank you!";
-        displayMessage(message);
+        String message = "";
+        return message = getResources().getString(R.string.order_summary_name, name) + "\n" +
+                getResources().getString(R.string.whippedCream) + ": " + hasWhippedCream + "\n" +
+                getResources().getString(R.string.chocolate) + ": " + hasChocolate + "\n" +
+                getResources().getString(R.string.quantity) + ": " + (quantityCapuccino + quantityLate + quantityMoca) + "\n" +
+                getResources().getString(R.string.total) + ": " + DecimalFormat.getCurrencyInstance().format(price) + "\n" +
+                getString(R.string.thankYou);
     }
 
     private int calculatePrice(int quantityLate, int quantityMoca, int quantityCapuccino, boolean hasChocolate, boolean hasWhippedCream) {
@@ -143,5 +140,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return (quantityLate * 5 + quantityMoca * 5 + quantityCapuccino * 5 + chocolatePrice * 2 + creamPrice * 1);
     }
+
 
 }

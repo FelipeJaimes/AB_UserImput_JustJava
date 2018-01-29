@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Solo Java</string>
+    <string name="type">Tipo</string>
+    <string name="quantity">Cantidad</string>
+    <string name="tfname">Nombre</string>
+    <string name="late">Late</string>
+    <string name="moca">Moca</string>
+    <string name="capuccino">Capuccino</string>
+    <string name="toppings">Coberturas</string>
+    <string name="whippedCream">Crema batida</string>
+    <string name="chocolate">Chocolate</string>
+    <string name="order">Ordenar</string>
+    <string name="total">Total</string>
+    <string name="thankYou">Gracias!</string>
+    <string name="order_summary_name">Nombre: <xliff:g id="name" example="Amy">%s</xliff:g></string>
+</resources>
